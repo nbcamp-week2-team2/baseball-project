@@ -8,7 +8,8 @@ struct BaseballGame {
         while true {
             print("숫자를 입력하세요\n>> ", terminator: "")
 
-            guard let answer = validatedAnswer(from: readLine()) else {
+            guard let input = readLine(),
+                  let answer = validatedAnswer(from: input) else {
                 print("올바르지 않은 입력값입니다\n")
                 continue
             }
@@ -46,30 +47,18 @@ struct BaseballGame {
 
     private func randomAnswer() -> Int {
         while true {
-            let answer = Array(String(Int.random(in: 102..<987)))
+            let answer = Int.random(in: 102..<987)
+            guard answer.isDistinct else { continue }
 
-            guard answer[0] != answer[1],
-                  answer[0] != answer[2],
-                  answer[1] != answer[2] else { continue }
-
-            return Int(String(answer)) ?? 0
+            return answer
         }
     }
 
-    private func validatedAnswer(from input: String?) -> Int? {
-        guard let input = input,
-              input.count == 3,
-              let answer = Int(input) else { return nil }
-
-        if answer.hundreds == 0 {
-            return nil
-        }
-
-        if answer.hundreds == answer.tens,
-           answer.hundreds == answer.units,
-           answer.tens == answer.units {
-            return nil
-        }
+    private func validatedAnswer(from input: String) -> Int? {
+        if input.count != 3 { return nil }
+        guard let answer = Int(input) else { return nil }
+        if answer.hundreds == 0 { return nil }
+        if !answer.isDistinct { return nil }
 
         return answer
     }

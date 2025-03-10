@@ -12,4 +12,11 @@ extension Int {
     var units: Int {
         return self % 10
     }
+
+    var isDistinct: Bool {
+        let array = Array(String(self))
+        let set = Set(array)
+
+        return array.count == set.count
+    }
 }
