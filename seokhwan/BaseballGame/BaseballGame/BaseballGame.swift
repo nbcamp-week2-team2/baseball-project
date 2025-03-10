@@ -36,6 +36,14 @@ struct BaseballGame {
     }
 
     private func randomAnswer() -> Int {
-        return Int.random(in: 0..<9)
+        while true {
+            let answer = Array(String(Int.random(in: 102..<987)))
+
+            guard answer[0] != answer[1],
+                  answer[0] != answer[2],
+                  answer[1] != answer[2] else { continue }
+
+            return Int(String(answer)) ?? 0
+        }
     }
 }
