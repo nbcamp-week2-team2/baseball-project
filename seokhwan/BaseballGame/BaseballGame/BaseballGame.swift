@@ -1,29 +1,21 @@
 import Foundation
 
 struct BaseballGame {
-    private enum Message: String {
-        case startGame = "< 게임을 시작합니다 >"
-        case pleaseInputNumber = "숫자를 입력하세요\n>> "
-        case invalidInput = "올바르지 않은 입력값입니다"
-        case correctAnswer = "정답입니다!\n"
-        case wrongAnswer = "Nothing"
-    }
-
     func start() {
         let correctAnswer = randomAnswer()
-        printMessage(.startGame)
+        print("< 게임을 시작합니다 >")
 
         while true {
-            printMessage(.pleaseInputNumber, terminator: "")
+            print("숫자를 입력하세요\n>> ", terminator: "")
 
             guard let input = readLine(),
                   let answer = Int(input) else {
-                printMessage(.invalidInput)
+                print("올바르지 않은 입력값입니다")
                 continue
             }
 
             if answer == correctAnswer {
-                printMessage(.correctAnswer)
+                print("정답입니다!\n")
                 break
             }
 
@@ -51,10 +43,6 @@ struct BaseballGame {
             let result = strikeCount == 0 && ballCount == 0 ? "Nothing\n" : "\(strikeCount)스트라이크 \(ballCount)볼\n"
             print(result)
         }
-    }
-
-    private func printMessage(_ message: BaseballGame.Message, terminator: String = "\n") {
-        print(message.rawValue, terminator: terminator)
     }
 
     private func randomAnswer() -> Int {
