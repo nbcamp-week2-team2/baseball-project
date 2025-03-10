@@ -8,9 +8,8 @@ struct BaseballGame {
         while true {
             print("숫자를 입력하세요\n>> ", terminator: "")
 
-            guard let input = readLine(),
-                  let answer = Int(input) else {
-                print("올바르지 않은 입력값입니다")
+            guard let answer = validatedAnswer(from: readLine()) else {
+                print("올바르지 않은 입력값입니다\n")
                 continue
             }
 
@@ -55,5 +54,23 @@ struct BaseballGame {
 
             return Int(String(answer)) ?? 0
         }
+    }
+
+    private func validatedAnswer(from input: String?) -> Int? {
+        guard let input = input,
+              input.count == 3,
+              let answer = Int(input) else { return nil }
+
+        if answer.hundreds == 0 {
+            return nil
+        }
+
+        if answer.hundreds == answer.tens,
+           answer.hundreds == answer.units,
+           answer.tens == answer.units {
+            return nil
+        }
+
+        return answer
     }
 }
