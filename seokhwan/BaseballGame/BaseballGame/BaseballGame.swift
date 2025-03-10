@@ -47,7 +47,7 @@ struct BaseballGame {
 
     private func randomAnswer() -> Int {
         while true {
-            let answer = Int.random(in: 102..<987)
+            let answer = Int.random(in: 102...987)
             guard answer.isDistinct else { continue }
 
             return answer
