@@ -11,28 +11,28 @@ struct BaseballGame {
 
     func start() {
         let correctAnswer = randomAnswer()
-        print(.startGame)
+        printMessage(.startGame)
 
         while true {
-            print(.pleaseInputNumber, terminator: "")
+            printMessage(.pleaseInputNumber, terminator: "")
 
             guard let input = readLine(),
                   let answer = Int(input) else {
-                print(.invalidInput)
+                printMessage(.invalidInput)
                 continue
             }
 
             if answer == correctAnswer {
-                print(.correctAnswer)
+                printMessage(.correctAnswer)
                 break
             } else {
-                print(.wrongAnswer)
+                printMessage(.wrongAnswer)
             }
         }
     }
 
-    private func print(_ message: BaseballGame.Message, terminator: String = "\n") {
-        Swift.print(message.rawValue, terminator: terminator)
+    private func printMessage(_ message: BaseballGame.Message, terminator: String = "\n") {
+        print(message.rawValue, terminator: terminator)
     }
 
     private func randomAnswer() -> Int {
