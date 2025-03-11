@@ -4,18 +4,24 @@ struct BaseballGame {
     func startApp() {
         while true {
             print("환영합니다! 원하시는 번호를 입력해주세요\n1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기\n>> ", terminator:  "")
-            switch readLine() {
-            case "1":
-                startGame()
-            case "2":
-                ()
-            case "3":
+
+            if let selectedNumber = readLine() {
+                switch selectedNumber {
+                case "1":
+                    startGame()
+                case "2":
+                    ()
+                case "3":
+                    print("< 숫자 야구 게임을 종료합니다 >")
+                    exit(0)
+                default:
+                    print("올바른 숫자를 입력해주세요!")
+                }
+                print()
+            } else {
                 print("\n< 숫자 야구 게임을 종료합니다 >")
                 exit(0)
-            default:
-                print("올바른 숫자를 입력해주세요!")
             }
-            print()
         }
     }
 
@@ -26,40 +32,44 @@ struct BaseballGame {
         while true {
             print("숫자를 입력하세요\n>> ", terminator: "")
 
-            guard let input = readLine(),
-                  let answer = validatedAnswer(from: input) else {
-                print("올바르지 않은 입력값입니다\n")
-                continue
+            if let input = readLine() {
+                if let answer = validatedAnswer(from: input) {
+                    if answer == correctAnswer {
+                        print("정답입니다!")
+                        break
+                    }
+
+                    var strikeCount = 0
+                    var ballCount = 0
+
+                    if answer.hundreds == correctAnswer.hundreds {
+                        strikeCount += 1
+                    } else if answer.hundreds == correctAnswer.tens || answer.hundreds == correctAnswer.units {
+                        ballCount += 1
+                    }
+
+                    if answer.tens == correctAnswer.tens {
+                        strikeCount += 1
+                    } else if answer.tens == correctAnswer.hundreds || answer.tens == correctAnswer.units {
+                        ballCount += 1
+                    }
+
+                    if answer.units == correctAnswer.units {
+                        strikeCount += 1
+                    } else if answer.units == correctAnswer.hundreds || answer.units == correctAnswer.tens {
+                        ballCount += 1
+                    }
+
+                    let result = strikeCount == 0 && ballCount == 0 ? "Nothing\n" : "\(strikeCount)스트라이크 \(ballCount)볼\n"
+                    print(result)
+                } else {
+                    print("올바르지 않은 입력값입니다\n")
+                    continue
+                }
+            } else {
+                print("\n< 숫자 야구 게임을 종료합니다 >")
+                exit(0)
             }
-
-            if answer == correctAnswer {
-                print("정답입니다!")
-                break
-            }
-
-            var strikeCount = 0
-            var ballCount = 0
-
-            if answer.hundreds == correctAnswer.hundreds {
-                strikeCount += 1
-            } else if answer.hundreds == correctAnswer.tens || answer.hundreds == correctAnswer.units {
-                ballCount += 1
-            }
-
-            if answer.tens == correctAnswer.tens {
-                strikeCount += 1
-            } else if answer.tens == correctAnswer.hundreds || answer.tens == correctAnswer.units {
-                ballCount += 1
-            }
-
-            if answer.units == correctAnswer.units {
-                strikeCount += 1
-            } else if answer.units == correctAnswer.hundreds || answer.units == correctAnswer.tens {
-                ballCount += 1
-            }
-
-            let result = strikeCount == 0 && ballCount == 0 ? "Nothing\n" : "\(strikeCount)스트라이크 \(ballCount)볼\n"
-            print(result)
         }
     }
 
