@@ -9,11 +9,21 @@ import Foundation
 
 
 class BaseballGame {
+    
+    let recordManager = RecordManager()
+    
+    var gameCount = 0
+    var trialCount = 0
+    
+    
     // MARK: - 게임 시작하기
     func start() {
-        print("< 게임을 시작합니다 >")
-        
         let answer = makeAnswer()
+        
+        trialCount = 0
+        
+        print("< 게임을 시작합니다 >")
+        gameCount += 1
 
         while true {
             print("\n숫자를 입력하세요")
@@ -25,6 +35,7 @@ class BaseballGame {
             
             // 한 줄 입력으로 변경
             userAnswer = (readLine() ?? "").map { String($0) }
+            trialCount += 1
             
             
             for i in 0..<3 {
@@ -39,8 +50,9 @@ class BaseballGame {
             if balls == 0 && strikes == 0 {
                 print("Nothing")
             } else if strikes == 3 {
-                print("정답입니다!")
-                break
+                print("정답입니다!\n")
+                recordManager.records[gameCount] = trialCount
+                welcome()
             } else if Set(userAnswer).count != 3 || !isInt(userAnswer) || userAnswer.contains("0"){
                 print("올바르지 않는 입력값입니다")
             }
@@ -79,12 +91,14 @@ class BaseballGame {
         
         // 배열 -> 문자열 변환
         print("정답: \(answer.joined())")
+
         return answer
     }
     
     // MARK: - 게임 기록 보기
     func log() {
-        
+        recordManager.showRecords()
+        welcome()
     }
     
     // MARK: - 종료하기
