@@ -36,8 +36,8 @@ class BaseballGame {
             userAnswer = (readLine() ?? "").map { String($0) }
             trialCount += 1
             
-            
-            for i in 0..<3 {
+            // strike, ball 체크
+            for i in answer.indices {
                 if userAnswer[i] == answer[i] {
                     strikes += 1
                 } else if userAnswer.contains(answer[i]) {
@@ -45,12 +45,14 @@ class BaseballGame {
                 }
             }
             
-            
+            // 정답, 오답 처리
             if balls == 0 && strikes == 0 {
                 print("Nothing")
             } else if strikes == 3 {
                 print("정답입니다!\n")
+                // record 저장
                 recordManager.records[gameCount] = trialCount
+                // 재시작
                 welcome()
             } else if Set(userAnswer).count != 3 || !isInt(userAnswer) || userAnswer.contains("0"){
                 print("올바르지 않는 입력값입니다")
@@ -61,6 +63,7 @@ class BaseballGame {
         }
     }
     
+    // 정수 판별
     func isInt(_ array: [String]) -> Bool {
         for i in 0 ..< array.count {
             guard Int(array[i]) != nil else { return false }
@@ -68,6 +71,7 @@ class BaseballGame {
         return true
     }
     
+    // 정답 생성
     func makeAnswer() -> [String] {
         var answer = [String]()
         var answerList = [String]()
@@ -89,7 +93,8 @@ class BaseballGame {
         }
         
         // 배열 -> 문자열 변환
-        print("정답: \(answer.joined())")
+        // 디버깅 시 정답 확인
+//        print("정답: \(answer.joined())")
 
         return answer
     }
