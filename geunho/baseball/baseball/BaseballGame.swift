@@ -103,7 +103,10 @@ class BaseballGame {
     
     // MARK: - 종료하기
     func quit() {
-        
+        print("\n< 숫자 야구 게임을 종료합니다 >")
+        gameCount = 0
+        trialCount = 0
+        exit(EXIT_SUCCESS)
     }
 }
 
