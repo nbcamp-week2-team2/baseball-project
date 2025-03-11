@@ -45,7 +45,7 @@ struct BaseballGame {
         }
     }
 
-    private func randomAnswer() -> Int {
+    func randomAnswer() -> Int {
         while true {
             let answer = Int.random(in: 102...987)
             guard answer.isDistinct else { continue }
@@ -54,7 +54,7 @@ struct BaseballGame {
         }
     }
 
-    private func validatedAnswer(from input: String) -> Int? {
+    func validatedAnswer(from input: String) -> Int? {
         if input.count != 3 { return nil }
         guard let answer = Int(input) else { return nil }
         if answer.hundreds == 0 { return nil }
