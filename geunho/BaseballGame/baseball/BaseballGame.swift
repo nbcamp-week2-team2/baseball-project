@@ -19,7 +19,6 @@ class BaseballGame {
     // MARK: - 게임 시작하기
     func start() {
         let answer = makeAnswer()
-        
         trialCount = 0
         
         print("< 게임을 시작합니다 >")

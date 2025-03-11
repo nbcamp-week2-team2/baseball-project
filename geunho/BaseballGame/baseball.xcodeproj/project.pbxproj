@@ -23,7 +23,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		66FB80DD2D7F08A300F158FE /* baseball */ = {
+		66EE9CE42D80554B00A0EB3F /* baseball */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = baseball;
 			sourceTree = "<group>";
@@ -44,7 +44,7 @@
 		66FB80D22D7F08A300F158FE = {
 			isa = PBXGroup;
 			children = (
-				66FB80DD2D7F08A300F158FE /* baseball */,
+				66EE9CE42D80554B00A0EB3F /* baseball */,
 				66FB80DC2D7F08A300F158FE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +73,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				66FB80DD2D7F08A300F158FE /* baseball */,
+				66EE9CE42D80554B00A0EB3F /* baseball */,
 			);
 			name = baseball;
 			packageProductDependencies = (
