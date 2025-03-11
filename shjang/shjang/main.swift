@@ -1,4 +1,4 @@
 import Foundation
 
-print("Hello, World!")
-
+// only the single instance is allowed // 
+BaseballGame.shared.start()
