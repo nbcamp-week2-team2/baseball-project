@@ -97,7 +97,11 @@ class BaseballGame {
     
     // MARK: - 게임 기록 보기
     func log() {
-        recordManager.showRecords()
+        if !recordManager.recordsList.isEmpty {
+            recordManager.showRecords()
+        } else {
+            print("\n기록이 없습니다")
+        }
         welcome()
     }
     
