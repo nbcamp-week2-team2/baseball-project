@@ -18,7 +18,6 @@ let game = BaseballGame()
 welcome()
 
 func welcome() {
-//    var gameState: GameState
     var selectedState: String
     
     print("\n환영합니다! 원하시는 번호를 입력해주세요!")
@@ -28,13 +27,10 @@ func welcome() {
     
     switch selectedState {
     case "1":
-//        gameState = .start
         game.start()
     case "2":
-//        gameState = .log
         game.log()
     case "3":
-//        gameState = .quit
         game.quit()
     default:
         print("올바른 번호를 입력해주세요")
