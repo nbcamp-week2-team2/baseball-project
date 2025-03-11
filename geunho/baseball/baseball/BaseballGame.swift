@@ -7,7 +7,9 @@
 
 import Foundation
 
+
 class BaseballGame {
+    // MARK: - 게임 시작하기
     func start() {
         print("< 게임을 시작합니다 >")
         
@@ -20,9 +22,9 @@ class BaseballGame {
             var strikes = 0
             var balls = 0
             
+            
             // 한 줄 입력으로 변경
             userAnswer = (readLine() ?? "").map { String($0) }
-        
             
             
             for i in 0..<3 {
@@ -78,6 +80,16 @@ class BaseballGame {
         // 배열 -> 문자열 변환
         print("정답: \(answer.joined())")
         return answer
+    }
+    
+    // MARK: - 게임 기록 보기
+    func log() {
+        
+    }
+    
+    // MARK: - 종료하기
+    func quit() {
+        
     }
 }
 
