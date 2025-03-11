@@ -1,27 +1,33 @@
 import Foundation
 
 struct BaseballGame {
+    enum StrikeBallResult {
+        case correct
+        case partialCorrect(strikes: Int, balls: Int)
+        case incorrect
+    }
+
     func startApp() {
         while true {
-            print("환영합니다! 원하시는 번호를 입력해주세요\n1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기\n>> ", terminator:  "")
+            print("환영합니다! 원하시는 번호를 입력해주세요\n1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기\n>> ", terminator: "")
 
-            if let selectedNumber = readLine() {
-                switch selectedNumber {
-                case "1":
-                    startGame()
-                case "2":
-                    ()
-                case "3":
-                    print("< 숫자 야구 게임을 종료합니다 >")
-                    exit(0)
-                default:
-                    print("올바른 숫자를 입력해주세요!")
-                }
-                print()
-            } else {
+            guard let selectedNumber = readLine() else {
                 print("\n< 숫자 야구 게임을 종료합니다 >")
                 exit(0)
             }
+
+            switch selectedNumber {
+            case "1":
+                startGame()
+            case "2":
+                ()
+            case "3":
+                print("< 숫자 야구 게임을 종료합니다 >")
+                exit(0)
+            default:
+                print("올바른 숫자를 입력해주세요!")
+            }
+            print()
         }
     }
 
@@ -32,43 +38,23 @@ struct BaseballGame {
         while true {
             print("숫자를 입력하세요\n>> ", terminator: "")
 
-            if let input = readLine() {
-                if let answer = validatedAnswer(from: input) {
-                    if answer == correctAnswer {
-                        print("정답입니다!")
-                        break
-                    }
-
-                    var strikeCount = 0
-                    var ballCount = 0
-
-                    if answer.hundreds == correctAnswer.hundreds {
-                        strikeCount += 1
-                    } else if answer.hundreds == correctAnswer.tens || answer.hundreds == correctAnswer.units {
-                        ballCount += 1
-                    }
-
-                    if answer.tens == correctAnswer.tens {
-                        strikeCount += 1
-                    } else if answer.tens == correctAnswer.hundreds || answer.tens == correctAnswer.units {
-                        ballCount += 1
-                    }
-
-                    if answer.units == correctAnswer.units {
-                        strikeCount += 1
-                    } else if answer.units == correctAnswer.hundreds || answer.units == correctAnswer.tens {
-                        ballCount += 1
-                    }
-
-                    let result = strikeCount == 0 && ballCount == 0 ? "Nothing\n" : "\(strikeCount)스트라이크 \(ballCount)볼\n"
-                    print(result)
-                } else {
-                    print("올바르지 않은 입력값입니다\n")
-                    continue
-                }
-            } else {
+            guard let input = readLine() else {
                 print("\n< 숫자 야구 게임을 종료합니다 >")
                 exit(0)
+            }
+            guard let answer = validatedAnswer(from: input) else {
+                print("올바르지 않은 입력값입니다\n")
+                continue
+            }
+
+            switch evaluate(answer: answer, from: correctAnswer) {
+            case .correct:
+                print("정답입니다!")
+                return
+            case .partialCorrect(let strikes, let balls):
+                print("\(strikes)스트라이크 \(balls)볼\n")
+            case .incorrect:
+                print("Nothing\n")
             }
         }
     }
@@ -83,11 +69,41 @@ struct BaseballGame {
     }
 
     func validatedAnswer(from input: String) -> Int? {
-        if input.count != 3 { return nil }
-        guard let answer = Int(input) else { return nil }
-        if answer.hundreds == 0 { return nil }
-        if !answer.isDistinct { return nil }
+        guard input.count == 3,
+              let answer = Int(input),
+              answer.hundreds != 0,
+              answer.isDistinct else { return nil }
 
         return answer
+    }
+
+    func evaluate(answer: Int, from correctAnswer: Int) -> StrikeBallResult {
+        if answer == correctAnswer {
+            return .correct
+        }
+
+        var strikes = 0
+        var balls = 0
+
+        if answer.hundreds == correctAnswer.hundreds {
+            strikes += 1
+        } else if answer.hundreds == correctAnswer.tens || answer.hundreds == correctAnswer.units {
+            balls += 1
+        }
+        if answer.tens == correctAnswer.tens {
+            strikes += 1
+        } else if answer.tens == correctAnswer.hundreds || answer.tens == correctAnswer.units {
+            balls += 1
+        }
+        if answer.units == correctAnswer.units {
+            strikes += 1
+        } else if answer.units == correctAnswer.hundreds || answer.units == correctAnswer.tens {
+            balls += 1
+        }
+
+        if strikes == 0 && balls == 0 {
+            return .incorrect
+        }
+        return .partialCorrect(strikes: strikes, balls: balls)
     }
 }
