@@ -35,6 +35,7 @@ final class BaseballGameTests: XCTestCase {
         XCTAssertNil(baseballGame.validatedAnswer(from: "112"))
         XCTAssertNil(baseballGame.validatedAnswer(from: "122"))
         XCTAssertNil(baseballGame.validatedAnswer(from: "212"))
+        XCTAssertNil(baseballGame.validatedAnswer(from: "111"))
     }
 
     /*
@@ -53,6 +54,15 @@ final class BaseballGameTests: XCTestCase {
     func test_일의자리추출() throws {
         let input = 123
         XCTAssertEqual(input.units, 3)
+    }
+
+    func test_3자리숫자인지체크() throws {
+        XCTAssertFalse(3.isThreeDigit)
+        XCTAssertFalse(99.isThreeDigit)
+        XCTAssertTrue(100.isThreeDigit)
+        XCTAssertTrue(456.isThreeDigit)
+        XCTAssertTrue(999.isThreeDigit)
+        XCTAssertFalse(1000.isThreeDigit)
     }
 
     func test_중복숫자체크() throws {

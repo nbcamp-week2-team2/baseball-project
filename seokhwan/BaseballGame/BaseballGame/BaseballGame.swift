@@ -74,9 +74,8 @@ struct BaseballGame {
     }
 
     func validatedAnswer(from input: String) -> Int? {
-        guard input.count == 3,
-              let answer = Int(input),
-              answer.hundreds != 0,
+        guard let answer = Int(input),
+              answer.isThreeDigit,
               answer.isDistinct else { return nil }
 
         return answer

@@ -13,6 +13,10 @@ extension Int {
         return self % 10
     }
 
+    var isThreeDigit: Bool {
+        return (100...999) ~= self
+    }
+
     var isDistinct: Bool {
         let array = Array(String(self))
         let set = Set(array)
