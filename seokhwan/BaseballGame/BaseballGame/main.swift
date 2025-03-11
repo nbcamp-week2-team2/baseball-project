@@ -1,4 +1,4 @@
 import Foundation
 
-let game = BaseballGame()
+var game = BaseballGame()
 game.startApp()

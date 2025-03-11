@@ -7,7 +7,9 @@ struct BaseballGame {
         case incorrect
     }
 
-    func startApp() {
+    var attempts = [Int]()
+
+    mutating func startApp() {
         while true {
             print("환영합니다! 원하시는 번호를 입력해주세요\n1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기\n>> ", terminator: "")
 
@@ -20,7 +22,7 @@ struct BaseballGame {
             case "1":
                 startGame()
             case "2":
-                ()
+                printGameRecords()
             case "3":
                 print("< 숫자 야구 게임을 종료합니다 >")
                 exit(0)
@@ -31,11 +33,13 @@ struct BaseballGame {
         }
     }
 
-    func startGame() {
+    mutating func startGame() {
         let correctAnswer = randomAnswer()
+        var attempt = 0
         print("\n< 게임을 시작합니다 >")
 
         while true {
+            attempt += 1
             print("숫자를 입력하세요\n>> ", terminator: "")
 
             guard let input = readLine() else {
@@ -50,6 +54,7 @@ struct BaseballGame {
             switch evaluate(answer: answer, from: correctAnswer) {
             case .correct:
                 print("정답입니다!")
+                attempts.append(attempt)
                 return
             case .partialCorrect(let strikes, let balls):
                 print("\(strikes)스트라이크 \(balls)볼\n")
@@ -105,5 +110,16 @@ struct BaseballGame {
             return .incorrect
         }
         return .partialCorrect(strikes: strikes, balls: balls)
+    }
+
+    func printGameRecords() {
+        var output = attempts.enumerated()
+            .map { "\n\($0.offset + 1)번째 게임 : 시도 횟수 - \($0.element)" }
+            .reduce("\n< 게임 기록 보기 >", +)
+
+        if attempts.isEmpty {
+            output += "\n저장된 기록이 없습니다!"
+        }
+        print(output)
     }
 }
