@@ -20,9 +20,9 @@ class BaseballGame {
             var strikes = 0
             var balls = 0
             
-            for _ in 0..<3 {
-                userAnswer.append(readLine()!)
-            }
+            // 한 줄 입력으로 변경
+            userAnswer = (readLine() ?? "").map { String($0) }
+        
             
             
             for i in 0..<3 {
@@ -74,7 +74,9 @@ class BaseballGame {
                continue
            }
         }
-        print("정답: \(answer)")
+        
+        // 배열 -> 문자열 변환
+        print("정답: \(answer.joined())")
         return answer
     }
 }
