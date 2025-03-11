@@ -1,9 +1,27 @@
 import Foundation
 
 struct BaseballGame {
-    func start() {
+    func startApp() {
+        while true {
+            print("환영합니다! 원하시는 번호를 입력해주세요\n1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기\n>> ", terminator:  "")
+            switch readLine() {
+            case "1":
+                startGame()
+            case "2":
+                ()
+            case "3":
+                print("\n< 숫자 야구 게임을 종료합니다 >")
+                exit(0)
+            default:
+                print("올바른 숫자를 입력해주세요!")
+            }
+            print()
+        }
+    }
+
+    func startGame() {
         let correctAnswer = randomAnswer()
-        print("< 게임을 시작합니다 >")
+        print("\n< 게임을 시작합니다 >")
 
         while true {
             print("숫자를 입력하세요\n>> ", terminator: "")
@@ -15,7 +33,7 @@ struct BaseballGame {
             }
 
             if answer == correctAnswer {
-                print("정답입니다!\n")
+                print("정답입니다!")
                 break
             }
 
