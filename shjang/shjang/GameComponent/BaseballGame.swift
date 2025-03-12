@@ -12,10 +12,12 @@ final class BaseballGame {
     
     /// Logic:       Start
     /// Description: This is the main Game Loop (depending on the user input, this will loop infinite**
+    /// Parameters Type: nil
+    /// Return:          nil
     func start() {
         print("Game Start")
         resetData()
-        while (true) {
+        while true {
             displayMenu()
             let ch = readLine()!
             switch (ch) {
@@ -24,28 +26,35 @@ final class BaseballGame {
             case "2":
                 showGameRecord()
             case "3":
-                print("Game Exit")
+                print("Game Exit\n")
                 resetData()
                 return
             default:
-                print("Invalid ")
+                print("Invalid\n")
             }
         }
     }
     
-    /// Utils:
+    /// logic:           displayMenu
+    /// Description:     display user selections
+    /// Parameters Type: nil
+    /// Return:          nil
     private func displayMenu() {
-        print("1. Game Start\t2.Game Record\t3.Exit")
+        print("1. Game Start\t2.Game Record\t3.Exit\n")
     }
     
+    /// logic:           playGame
+    /// Description:     loop until if the userinput is same as computer generated answer
+    /// Parameters Type: nil
+    /// Return:          nil
     private func playGame() {
         print("Enter the Number")
         currentTimeInterval = Date()
-        print(answer)
         var currentData = RecordHistory()
-        while (true) {
+        while true {
+            print(answer)
             userInput = readLine()!
-            if guess(record: &currentData) {
+            if guess(history: &currentData) {
                 print("Game End")
                 let currentTimeEndInterval = Date()
                 currentData.totalTime = currentTimeEndInterval.timeIntervalSince(currentTimeInterval)
@@ -55,43 +64,60 @@ final class BaseballGame {
         }
     }
     
-    /* Game Logic */
-    private func guess(record: inout RecordHistory) -> Bool {
-        if !validate(userInput: userInput){
+    /// logic:           guess
+    /// Description:     check if the user input is valid, otherwise fill the data accordingly, return if
+    ///                  user input is equal to computer generated data
+    /// Parameters Type: RecordHistory (Ref)
+    /// Return:          Bool
+    private func guess(history: inout RecordHistory) -> Bool {
+        if !validate(userInput: &userInput){
             return false
         }
         
         var strikeBallRecord = StrikeBallRecord()
-        record.attempts += 1
         calcScore(record: &strikeBallRecord)
-        record.records.append(strikeBallRecord)
-        print(strikeBallRecord.strikeCount, strikeBallRecord.ballCount)
+        history.attempts += 1
+        history.records.append(strikeBallRecord)
+        print("strke: \(strikeBallRecord.strikeCount) - ball: \(strikeBallRecord.ballCount)")
         return strikeBallRecord.strikeCount == 3
     }
     
+    /// Utils:           saveGameHistory
+    /// Description:     As function_name: "guess" is done, push the data into Array to track the history
+    /// Parameters Type: RecordHistory (Ref)
+    /// Return:          nil
     private func saveGameHistory(_ history: RecordHistory) {
         histories.append(history)
     }
     
+    /// Utils:           resetData
+    /// Description:     to clear all data in Array.
+    /// Parameters Type: nil
+    /// Return:          nil
     private func resetData() {
         histories.removeAll()
     }
     
+    /// Utils:           showGameRecord
+    /// Description:     print the game states (# of game, # of attempts, total time)
+    /// Parameters Type: nil
+    /// Return:          nil
     private func showGameRecord() {
         print("< Show Records >")
-        if histories.count <= 0 {
+        if histories.isEmpty {
             print("No Record Found")
         } else {
             for (index, history) in histories.enumerated() {
-                print("Game Number: \(index + 1)")
-                print("Iteration: \(history.attempts)")
-                print("Total Time: \(history.totalTime) sec")
-                print()
+                print("Game Number: \(index + 1) \nIteration: \(history.attempts) \n"
+                      + "Total Time: \(history.totalTime) sec \n")
             }
         }
     }
     
-    /* Game Logic */
+    /// logic:           calcScore
+    /// Description:     check if the user data are eqaul, depending on the result, return strikes / balls
+    /// Parameters Type: StrikeBallRecord
+    /// Return:          nil
     private func calcScore(record: inout StrikeBallRecord) {
         let answerStr = String(answer)
         var strike = 0
@@ -134,7 +160,7 @@ final class BaseballGame {
     }
 
     // TODO: Return this as Error Code
-    private func validate(userInput: String) -> Bool {
+    private func validate(userInput: inout String) -> Bool {
         if !userInput.isNumeric {
             print(ErrorCode.invalidInputType.localizedDescription)
             return false
@@ -150,6 +176,7 @@ final class BaseballGame {
             return false
         }
         
+        // TODO: Review -> guard let
         let userInputInt = Int(userInput)!
         if hasRepetitiveNumber(userInputInt) {
             print(ErrorCode.repetitiveNumbers.localizedDescription)

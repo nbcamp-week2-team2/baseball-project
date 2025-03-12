@@ -1,10 +1,8 @@
 import Foundation
 struct SeedRandomNumberGenerator: RandomNumberGenerator {
-    private var state: Int
     init(seed: Int){
         //long int
         srand48(seed)
-        state = seed
     }
     
     mutating func next() -> UInt64 {

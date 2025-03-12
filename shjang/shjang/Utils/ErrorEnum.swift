@@ -1,5 +1,5 @@
 /*  Define Error Code */
-enum ErrorCode {
+enum ErrorCode{
     case generalInputError
     case exceedMaxLength
     case invalidInputType
