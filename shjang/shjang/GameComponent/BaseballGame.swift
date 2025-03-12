@@ -19,7 +19,10 @@ final class BaseballGame {
         resetData()
         while true {
             displayMenu()
-            let ch = readLine()!
+            guard let ch = readLine() else {
+                print(ErrorCode.eofInputError.localizedDescription)
+                return
+            }
             switch (ch) {
             case "1":
                 playGame()
@@ -30,7 +33,7 @@ final class BaseballGame {
                 resetData()
                 return
             default:
-                print("Invalid\n")
+                print(ErrorCode.generalInputError)
             }
         }
     }
@@ -52,7 +55,6 @@ final class BaseballGame {
         currentTimeInterval = Date()
         var currentData = RecordHistory()
         while true {
-            print(answer)
             userInput = readLine()!
             if guess(history: &currentData) {
                 print("Game End")
@@ -70,7 +72,13 @@ final class BaseballGame {
     /// Parameters Type: RecordHistory (Ref)
     /// Return:          Bool
     private func guess(history: inout RecordHistory) -> Bool {
-        if !validate(userInput: &userInput){
+        do {
+            try validate(userInput: &userInput)
+        } catch let error as ErrorCode {
+            print("\(error.localizedDescription)")
+            return false
+        } catch {
+            print(error.localizedDescription)
             return false
         }
         
@@ -105,7 +113,7 @@ final class BaseballGame {
     private func showGameRecord() {
         print("< Show Records >")
         if histories.isEmpty {
-            print("No Record Found")
+            print(ErrorCode.emptyHistory.localizedDescription)
         } else {
             for (index, history) in histories.enumerated() {
                 print("Game Number: \(index + 1) \nIteration: \(history.attempts) \n"
@@ -160,30 +168,26 @@ final class BaseballGame {
     }
 
     // TODO: Return this as Error Code
-    private func validate(userInput: inout String) -> Bool {
+    private func validate(userInput: inout String) throws {
         if !userInput.isNumeric {
-            print(ErrorCode.invalidInputType.localizedDescription)
-            return false
+            throw ErrorCode.invalidInputType
         }
         
         if userInput.count != 3 {
-            print(ErrorCode.exceedMaxLength.localizedDescription)
-            return false
+            throw ErrorCode.exceedMaxLength
         }
         
         if isFirstDigitZero(userInput) {
-            print(ErrorCode.isFirstDigitZero.localizedDescription)
-            return false
+            throw ErrorCode.isFirstDigitZero
         }
         
         // TODO: Review -> guard let
-        let userInputInt = Int(userInput)!
-        if hasRepetitiveNumber(userInputInt) {
-            print(ErrorCode.repetitiveNumbers.localizedDescription)
-           return false
+        guard let userInputInt = Int(userInput) else {
+            throw ErrorCode.repetitiveNumbers
         }
-        
-        return true
+        if hasRepetitiveNumber(userInputInt) {
+            throw ErrorCode.repetitiveNumbers
+        }
     }
     
     /// Utils:           hasRepetitiveNumber
