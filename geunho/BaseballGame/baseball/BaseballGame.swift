@@ -36,31 +36,50 @@ class BaseballGame {
             userAnswer = (readLine() ?? "").map { String($0) }
             trialCount += 1
             
-            // strike, ball 체크
-            for i in answer.indices {
-                if userAnswer[i] == answer[i] {
-                    strikes += 1
-                } else if userAnswer.contains(answer[i]) {
-                    balls += 1
+            
+            
+            
+            // 입력 오류 처리
+            if userAnswer.count != 3 {
+                print("세 번호를 입력해주세요")
+                continue
+            } else if Set(userAnswer).count != 3 || !isInt(userAnswer) || userAnswer.contains("0"){
+                print("올바르지 않는 입력값입니다")
+            } else {
+                // 잘못된 입력으로 힌트 얻기 방지
+                
+                // strike, ball 갱신
+                for i in answer.indices {
+                    if userAnswer[i] == answer[i] {
+                        strikes += 1
+                    } else if userAnswer.contains(answer[i]) {
+                        balls += 1
+                    }
+                }
+                // strike, ball 입력 체크
+                if strikes == 3 {
+                    print("정답입니다!\n")
+                    // record 업데이트, 추가
+                    updateRecord()
+                    recordManager.addRecord()
+                    // 재시작
+                    welcome()
+                } else if balls == 0 && strikes == 0 {
+                    print("Nothing")
+                } else {
+                    print("\(strikes)스트라이크 \(balls)볼")
                 }
             }
             
-            // 정답, 오답 처리
-            if balls == 0 && strikes == 0 {
-                print("Nothing")
-            } else if strikes == 3 {
-                print("정답입니다!\n")
-                // record 업데이트, 추가
-                updateRecord()
-                recordManager.addRecord()
-                // 재시작
-                welcome()
-            } else if Set(userAnswer).count != 3 || !isInt(userAnswer) || userAnswer.contains("0"){
-                print("올바르지 않는 입력값입니다")
-            }
-            else {
-                print("\(strikes)스트라이크 \(balls)볼")
-            }
+            
+            
+            
+           
+            
+            
+            
+            
+           
         }
     }
     
