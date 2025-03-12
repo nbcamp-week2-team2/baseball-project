@@ -24,12 +24,11 @@ struct BaseballGame {
             case "2":
                 printGameRecords()
             case "3":
-                print("< 숫자 야구 게임을 종료합니다 >")
+                print("\n< 숫자 야구 게임을 종료합니다 >\n")
                 exit(0)
             default:
-                print("올바른 숫자를 입력해주세요!")
+                print("올바른 숫자를 입력해주세요!\n")
             }
-            print()
         }
     }
 
@@ -53,7 +52,7 @@ struct BaseballGame {
 
             switch evaluate(answer: answer, from: correctAnswer) {
             case .correct:
-                print("정답입니다!")
+                print("정답입니다!\n")
                 attempts.append(attempt)
                 return
             case .partialCorrect(let strikes, let balls):
@@ -119,6 +118,6 @@ struct BaseballGame {
         if attempts.isEmpty {
             output += "\n저장된 기록이 없습니다!"
         }
-        print(output)
+        print("\(output)\n")
     }
 }
