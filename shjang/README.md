@@ -29,6 +29,7 @@ I was able to finish the project with all steps are shown above, and meet the cr
 6. Usage of Comments
     - docstring
 7. Exception Handling
+    - try to look `/GameComponent/BaseballGame.swift` at line 75 & 170. 
 8. Commit 10 times (useless)
     - why? 10 times ?
 9. UX -> this is not required for this project
