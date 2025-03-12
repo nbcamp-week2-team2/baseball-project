@@ -50,8 +50,9 @@ class BaseballGame {
                 print("Nothing")
             } else if strikes == 3 {
                 print("정답입니다!\n")
-                // record 저장
-                recordManager.records[gameCount] = trialCount
+                // record 업데이트, 추가
+                updateRecord()
+                recordManager.addRecord()
                 // 재시작
                 welcome()
             } else if Set(userAnswer).count != 3 || !isInt(userAnswer) || userAnswer.contains("0"){
@@ -61,6 +62,11 @@ class BaseballGame {
                 print("\(strikes)스트라이크 \(balls)볼")
             }
         }
+    }
+    
+    // record 업데이트
+    func updateRecord() {
+        recordManager.records[gameCount] = trialCount
     }
     
     // 정수 판별
@@ -94,14 +100,14 @@ class BaseballGame {
         
         // 배열 -> 문자열 변환
         // 디버깅 시 정답 확인
-//        print("정답: \(answer.joined())")
+        print("정답: \(answer.joined())")
 
         return answer
     }
     
     // MARK: - 게임 기록 보기
     func log() {
-        if !recordManager.recordsList.isEmpty {
+        if !recordManager.records.isEmpty {
             recordManager.showRecords()
         } else {
             print("\n기록이 없습니다")
