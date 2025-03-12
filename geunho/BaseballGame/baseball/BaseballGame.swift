@@ -45,6 +45,7 @@ class BaseballGame {
                 continue
             } else if Set(userAnswer).count != 3 || !isInt(userAnswer) || userAnswer.contains("0"){
                 print("올바르지 않는 입력값입니다")
+                continue
             } else {
                 // 잘못된 입력으로 힌트 얻기 방지
                 
