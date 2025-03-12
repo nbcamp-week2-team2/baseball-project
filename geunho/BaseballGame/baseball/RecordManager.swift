@@ -12,12 +12,18 @@ class RecordManager {
     var recordsList = [String]()
     var records = [Int:Int]()
     
+    func addRecord() {
+        for record in records {
+            if recordsList.contains("\(record.key)번째 게임 : 시도 횟수 - \(record.value)") == false {
+                
+                recordsList.append(("\(record.key)번째 게임 : 시도 횟수 - \(record.value)"))
+            }
+        }
+    }
+    
     func showRecords() {
         print("\n< 게임 기록 보기 >")
         
-        for record in records {
-            recordsList.append(("\(record.key)번째 게임 : 시도 횟수 - \(record.value)"))
-        }
         recordsList.sort()
         
         recordsList.forEach {
