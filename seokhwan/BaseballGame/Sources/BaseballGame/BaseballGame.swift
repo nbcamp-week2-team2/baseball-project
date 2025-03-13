@@ -3,16 +3,21 @@ import Foundation
 /**
  BaseballGame을 관리하는 구조체
  */
-struct BaseballGame {
+public struct BaseballGame {
     /**
      게임별 시도 횟수를 저장하는 정수 배열
      */
     private var attempts = [Int]()
 
     /**
+     다른 모듈에서 접근하기 위한 public 생성자
+     */
+    public init() { }
+
+    /**
      앱을 시작하고, 유저의 입력에 따라 로직을 분기하는 메서드
      */
-    mutating func startApp() {
+    public mutating func startApp() {
         while true {
             print(BaseballGameText.appPrompt, terminator: "")
 

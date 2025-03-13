@@ -1,4 +1,5 @@
 import XCTest
+@testable import BaseballGame
 
 final class BaseballGameTests: XCTestCase {
     var baseballGame: BaseballGame!
