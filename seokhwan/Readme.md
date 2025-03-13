@@ -1,10 +1,14 @@
-# BaseballGame
+# ⚾️ BaseballGame 
 
-## Introduce
+## 👀 Introduce
 
 간단한 숫자야구 MacOS CLI App입니다.
 
-## Directory Structure
+## 🔥 Stack
+
+Xcode, Swift, MacOS CLI
+
+## 🔦 Directory Structure
 
 ```bash
 seokhwan
@@ -22,7 +26,7 @@ seokhwan
 └── Readme.md
 ```
 
-## Usage
+## 🛠️ Usage
 
 ```bash
 git clone https://github.com/nbcamp-week2-team2/baseball-project.git
@@ -32,7 +36,7 @@ open BaseballGame.xcodeproj
 
 프로젝트 실행 후 Run(`⌘ + R`)
 
-## Features
+## 🚀 Features
 
 ### 필수 구현기능(Lv.1 ~ Lv.2)
 
@@ -53,7 +57,7 @@ open BaseballGame.xcodeproj
 ### 기타사항
 
 - [x] TIL에 트러블 슈팅 과정 기록
-- [x] 코드리뷰 진행(PR #2)
+- [x] 코드리뷰 진행(PR [#2](https://github.com/nbcamp-week2-team2/baseball-project/pull/2))
 - [x] 디렉터리 및 파일 분리
 - [x] 네이밍 직관적이고 이해하기 쉽게 작성
 - [x] 주석 활용해 코드 설명
@@ -61,6 +65,6 @@ open BaseballGame.xcodeproj
 - [x] 2가지 이상의 예외처리 구현
 - [x] 컨벤션을 준수한 커밋 10회 이상
 
-## Trouble Shooting
+## 💡 Trouble Shooting
 
 - [SPM은 왜 xcodeproj 파일을 ignore할까?](https://youseokhwan.me/blog/spm-ignore-xcodeproj/)
