@@ -31,9 +31,16 @@ class BaseballGame {
             var strikes = 0
             var balls = 0
             
-            
+            /// 승호님: String()으로 하는 건 어떨지?
+            /// 욱현님: ?? "" 이유
+            /// 석환님: EOF 이후 재역할을 못함, EOF 처리 필요!, Swift String에서는 왜 인덱스 접근이 안되는지?
             // 한 줄 입력으로 변경
-            userAnswer = (readLine() ?? "").map { String($0) }
+            // EOF 처리 추가
+            guard let input = readLine() else {
+                print("\nEOF가 입력되었습니다. 게임을 종료합니다.")
+                exit(EXIT_FAILURE)
+            }
+            userAnswer = input.map { String($0) }
             trialCount += 1
             
             
