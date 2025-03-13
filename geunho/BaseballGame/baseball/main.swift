@@ -24,7 +24,12 @@ func welcome() {
         print("\n환영합니다! 원하시는 번호를 입력해주세요!")
         print("\(GameState.start.rawValue)  \(GameState.log.rawValue)  \(GameState.quit.rawValue)")
         
-        selectedState = readLine() ?? ""
+        guard let input = readLine() else {
+            print("\nEOF가 입력되었습니다. 게임을 종료합니다.")
+            exit(EXIT_FAILURE)
+        }
+        
+        selectedState = input
         
         switch selectedState {
         case "1":
