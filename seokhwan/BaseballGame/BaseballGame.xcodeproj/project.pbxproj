@@ -29,6 +29,7 @@
 			membershipExceptions = (
 				BaseballGame.swift,
 				"Int+Extensions.swift",
+				StrikeBallEvaluator.swift,
 			);
 			target = 44E3D62F2D7FD56300B16B60 /* BaseballGameTests */;
 		};
