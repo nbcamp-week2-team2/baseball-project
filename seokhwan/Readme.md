@@ -6,23 +6,26 @@
 
 ## 🔥 Stack
 
-Xcode, Swift, MacOS CLI
+Xcode, Swift, MacOS CLI, SPM Modularization
 
 ## 🔦 Directory Structure
 
 ```bash
 seokhwan
 ├── BaseballGame
-│   ├── BaseballGame.xcodeproj
-│   ├── BaseballGame
-│   │   ├── main.swift
-│   │   ├── BaseballGame.swift
-│   │   ├── BaseballGameMenuOption.swift
-│   │   ├── BaseballGameStrikeBallEvaluator.swift
-│   │   ├── BaseballGameText.swift
-│   │   └── Int+Extensions.swift
-│   └── BaseballGameTests
-│       └── BaseballGameTests.swift
+│   ├── Package.swift
+│   ├── Sources
+│   │   ├── BaseballGame
+│   │   │   ├── BaseballGame.swift
+│   │   │   ├── BaseballGameMenuOption.swift
+│   │   │   ├── BaseballGameStrikeBallEvaluator.swift
+│   │   │   ├── BaseballGameText.swift
+│   │   │   └── Int+Extensions.swift
+│   │   └── BaseballGameCLI
+│   │       └── main.swift
+│   └── Tests
+│       └── BaseballGameTests
+│           └── BaseballGameTests.swift
 └── Readme.md
 ```
 
@@ -31,15 +34,20 @@ seokhwan
 ```bash
 git clone https://github.com/nbcamp-week2-team2/baseball-project.git
 cd baseball-project/seokhwan/BaseballGame
-open BaseballGame.xcodeproj
+
+swift run # 앱 실행
+swift test # 테스트 실행
+open Package.swift # 프로젝트 열기
 ```
 
-프로젝트 실행 후 Run(`⌘ + R`)
+* Run on Xcode -> BaseballGameCLI로 타겟 설정 후 `⌘ + R`
+* Test on Xcode -> BaseballGame-Package로 타겟 설정 후 `⌘ + U` 
 
 ## 🚀 Features
 
 ### 필수 구현기능(Lv.1 ~ Lv.2)
 
+- [x] Swift 5.9 버전으로 설정
 - [x] 1에서 9까지 임의의 수 3개를 랜덤으로 정하고 맞추는 기능
 - [x] 정답을 입력했을 때, 스트라이크 및 볼 판정해서 힌트 제공
 - [x] 올바르지 않은 입력값에 대해 오류 문구 출력
@@ -58,7 +66,7 @@ open BaseballGame.xcodeproj
 
 - [x] TIL에 트러블 슈팅 과정 기록
 - [x] 코드리뷰 진행(PR [#2](https://github.com/nbcamp-week2-team2/baseball-project/pull/2))
-- [x] 디렉터리 및 파일 분리
+- [x] 디렉터리 및 파일 분리(+모듈화)
 - [x] 네이밍 직관적이고 이해하기 쉽게 작성
 - [x] 주석 활용해 코드 설명
 - [x] Readme.md 작성
