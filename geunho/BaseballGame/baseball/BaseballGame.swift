@@ -18,43 +18,36 @@ class BaseballGame {
     // MARK: - 게임 시작하기
     func start() {
         let answer = makeAnswer()
+        // 시도 횟수
         trialCount = 0
         
         print("< 게임을 시작합니다 >")
+        // 게임 수
         gameCount += 1
         
         while true {
-            print("\n숫자를 입력하세요")
+            print("\n서로 다른 세 자리 숫자를 입력하세요\n> ", terminator: "")
             
             var userAnswer = [String]()
             var strikes = 0
             var balls = 0
             
-            /// 승호님: String()으로 하는 건 어떨지?
-            /// 욱현님: ?? "" 이유
-            /// 석환님: EOF 이후 재역할을 못함, EOF 처리 필요!, Swift String에서는 왜 인덱스 접근이 안되는지?
-            // 한 줄 입력으로 변경
-            // EOF 처리 추가
             guard let input = readLine() else {
-                print("\nEOF가 입력되었습니다. 게임을 종료합니다.")
+                print("\n잘못된 입력입니다. 게임을 종료합니다.")
                 exit(EXIT_FAILURE)
             }
             userAnswer = input.map { String($0) }
-            trialCount += 1
             
             
             // 입력 오류 처리
-            /// 승호님: 미리 예외 처리하는게 어떨까요?
             if userAnswer.count != 3 {
                 print("세 번호를 입력해주세요")
                 continue
             } else if Set(userAnswer).count != 3 || !isInt(userAnswer) || userAnswer.contains("0"){
                 print("올바르지 않는 입력값입니다")
                 continue
-            } else {
-                // 잘못된 입력으로 힌트 얻기 방지
+            } else { // 잘못된 입력으로 힌트 얻기 방지
                 // strike, ball 갱신
-                
                 for i in answer.indices {
                     if userAnswer[i] == answer[i] {
                         strikes += 1
@@ -65,9 +58,7 @@ class BaseballGame {
                 // strike, ball 입력 체크
                 if strikes == 3 {
                     print("정답입니다!\n")
-                    // record 업데이트, 추가
                     updateRecord()
-                    //                    recordManager.addRecord()
                     // 재시작
                     runMainMenu()
                 } else if balls == 0 && strikes == 0 {
@@ -95,16 +86,9 @@ class BaseballGame {
     // 정답 생성
     func makeAnswer() -> [String] {
         var answer = [String]()
-        //        var answerLists = [String]()
         let tempNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
         var count = 3
         
-        /// 석환님: 메모리 확보 후 append -> 추가할 만큼의 공간을 확보해야함(memory allocation 필요) -> 성능 저하, 이미 위에서 변수 선언 시 메모리 확보하였음
-        //        for i in 1...9 {
-        //            answerList.append("\(i)")
-        //        }
-        
-        /// 승호님: 난수 생성기를 뭔가 Array 를 만드시고, 거기에 RandomElement 만 빼와서, answer.join() 를 해서 String 값을 만든 이유?
         while true {
             if count < 1 { break }
             let rand = tempNumbers.randomElement()!
@@ -116,7 +100,6 @@ class BaseballGame {
             }
         }
         
-        // 배열 -> 문자열 변환
         // 디버깅 시 정답 확인
         print("정답: \(answer.joined())")
         
@@ -124,8 +107,6 @@ class BaseballGame {
     }
     
     // MARK: - 게임 기록 보기
-    /// 승호님: 애매한 함수이름 (ex: showLog()등으로 변경)
-    /// 석환님: 명사만 이름 오면(메소드) -> get이 생략된 것: 명사만 쓰지 말 것
     func showLog() {
         if !recordManager.records.isEmpty {
             recordManager.showRecords()

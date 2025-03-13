@@ -17,16 +17,16 @@ let game = BaseballGame()
 
 runMainMenu()
 
-/// 석환님: welcome -> 명확한 이름으로 변경
+// 메인 메뉴
 func runMainMenu() {
     while true {
         var selectedState: String
         
-        print("\n환영합니다! 원하시는 번호를 입력해주세요!")
-        print("\(GameState.start.rawValue)  \(GameState.log.rawValue)  \(GameState.quit.rawValue)")
+        print("\n환영합니다! 원하시는 메뉴의 번호를 입력해주세요!")
+        print("\(GameState.start.rawValue)  \(GameState.log.rawValue)  \(GameState.quit.rawValue)\n메뉴번호: ",terminator: "")
         
         guard let input = readLine() else {
-            print("\nEOF가 입력되었습니다. 게임을 종료합니다.")
+            print("\n잘못된 입력입니다. 게임을 종료합니다.")
             exit(EXIT_FAILURE)
         }
         
