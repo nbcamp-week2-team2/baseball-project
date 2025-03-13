@@ -28,6 +28,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				BaseballGame.swift,
+				BaseballGameMenuOption.swift,
+				BaseballGameText.swift,
 				"Int+Extensions.swift",
 				StrikeBallEvaluator.swift,
 			);

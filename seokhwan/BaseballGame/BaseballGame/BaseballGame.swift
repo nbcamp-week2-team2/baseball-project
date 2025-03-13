@@ -14,22 +14,24 @@ struct BaseballGame {
      */
     mutating func startApp() {
         while true {
-            print("환영합니다! 원하시는 번호를 입력해주세요\n1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기\n>> ", terminator: "")
+            print(BaseballGameText.appPrompt, terminator: "")
 
-            guard let selectedNumber = readLine() else {
+            guard let input = readLine() else {
                 exitApp()
                 return
             }
+            guard let selectedOption = BaseballGameMenuOption(from: input) else {
+                print(BaseballGameText.invalidNumber)
+                continue
+            }
 
-            switch selectedNumber {
-            case "1":
+            switch selectedOption {
+            case .startGame:
                 startGame()
-            case "2":
-                printGameRecords()
-            case "3":
+            case .viewHistory:
+                printRecords()
+            case .exitApp:
                 exitApp()
-            default:
-                print("올바른 숫자를 입력해주세요!\n")
             }
         }
     }
@@ -40,30 +42,30 @@ struct BaseballGame {
     mutating func startGame() {
         let correctAnswer = randomAnswer()
         var attempt = 0
-        print("\n< 게임을 시작합니다 >")
+        print(BaseballGameText.startGame)
 
         while true {
             attempt += 1
-            print("숫자를 입력하세요\n>> ", terminator: "")
+            print(BaseballGameText.gamePrompt, terminator: "")
 
             guard let input = readLine() else {
                 exitApp()
                 return
             }
             guard let answer = validatedAnswer(from: input) else {
-                print("올바르지 않은 입력값입니다\n")
+                print(BaseballGameText.invalidNumber)
                 continue
             }
 
             switch StrikeBallEvaluator.evaluate(answer: answer, from: correctAnswer) {
             case .correct:
-                print("정답입니다!\n")
+                print(BaseballGameText.correct)
                 attempts.append(attempt)
                 return
             case .partialCorrect(let strikes, let balls):
-                print("\(strikes)스트라이크 \(balls)볼\n")
+                print(BaseballGameText.partialCorrect(strikes, balls))
             case .incorrect:
-                print("Nothing\n")
+                print(BaseballGameText.incorrect)
             }
         }
     }
@@ -76,7 +78,9 @@ struct BaseballGame {
      */
     func randomAnswer() -> Int {
         while true {
-            let answer = Int.random(in: 102...987)
+            let minAnswer = 102
+            let maxAnswer = 987
+            let answer = Int.random(in: minAnswer...maxAnswer)
             guard answer.isDistinct else { continue }
 
             return answer
@@ -102,22 +106,22 @@ struct BaseballGame {
     /**
      게임 기록을 출력하는 메서드
      */
-    func printGameRecords() {
+    func printRecords() {
         var output = attempts.enumerated()
-            .map { "\n\($0.offset + 1)번째 게임 : 시도 횟수 - \($0.element)" }
-            .reduce("\n< 게임 기록 보기 >", +)
+            .map { BaseballGameText.record($0.offset + 1, $0.element) }
+            .reduce(BaseballGameText.viewHistoryTitle, +)
 
         if attempts.isEmpty {
-            output += "\n저장된 기록이 없습니다!"
+            output += BaseballGameText.noRecords
         }
-        print("\(output)\n")
+        print(output, terminator: "\n\n")
     }
 
     /**
      앱을 종료하는 메서드
      */
     func exitApp() {
-        print("\n< 숫자 야구 게임을 종료합니다 >")
-        exit(0)
+        print(BaseballGameText.exit)
+        exit(EXIT_SUCCESS)
     }
 }
