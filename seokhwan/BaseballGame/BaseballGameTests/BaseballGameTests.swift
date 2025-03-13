@@ -41,21 +41,6 @@ final class BaseballGameTests: XCTestCase {
     /*
      Int+Extensions에 대한 TC
      */
-    func test_백의자리추출() throws {
-        let input = 123
-        XCTAssertEqual(input.hundreds, 1)
-    }
-
-    func test_십의자리추출() throws {
-        let input = 123
-        XCTAssertEqual(input.tens, 2)
-    }
-
-    func test_일의자리추출() throws {
-        let input = 123
-        XCTAssertEqual(input.units, 3)
-    }
-
     func test_3자리숫자인지체크() throws {
         XCTAssertFalse(3.isThreeDigit)
         XCTAssertFalse(99.isThreeDigit)
@@ -71,5 +56,9 @@ final class BaseballGameTests: XCTestCase {
         XCTAssertFalse(122.isDistinct)
         XCTAssertFalse(212.isDistinct)
         XCTAssertFalse(111.isDistinct)
+    }
+
+    func test_자릿수분리체크() throws {
+        XCTAssertEqual(123.digits, [1, 2, 3])
     }
 }

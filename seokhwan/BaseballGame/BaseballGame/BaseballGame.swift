@@ -81,33 +81,19 @@ struct BaseballGame {
     }
 
     func evaluate(answer: Int, from correctAnswer: Int) -> StrikeBallResult {
-        if answer == correctAnswer {
-            return .correct
-        }
+        guard answer != correctAnswer else { return .correct }
+        let answer = answer.digits
+        let correctAnswer = correctAnswer.digits
 
         var strikes = 0
         var balls = 0
 
-        if answer.hundreds == correctAnswer.hundreds {
-            strikes += 1
-        } else if answer.hundreds == correctAnswer.tens || answer.hundreds == correctAnswer.units {
-            balls += 1
-        }
-        if answer.tens == correctAnswer.tens {
-            strikes += 1
-        } else if answer.tens == correctAnswer.hundreds || answer.tens == correctAnswer.units {
-            balls += 1
-        }
-        if answer.units == correctAnswer.units {
-            strikes += 1
-        } else if answer.units == correctAnswer.hundreds || answer.units == correctAnswer.tens {
-            balls += 1
+        answer.enumerated().forEach { index, _ in
+            strikes += answer[index] == correctAnswer[index] ? 1 : 0
+            balls += answer[index] != correctAnswer[index] && correctAnswer.contains(answer[index]) ? 1 : 0
         }
 
-        if strikes == 0 && balls == 0 {
-            return .incorrect
-        }
-        return .partialCorrect(strikes: strikes, balls: balls)
+        return strikes == 0 && balls == 0 ? .incorrect : .partialCorrect(strikes: strikes, balls: balls)
     }
 
     func printGameRecords() {
