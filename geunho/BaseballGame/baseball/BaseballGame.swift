@@ -47,6 +47,8 @@ class BaseballGame {
                 print("올바르지 않는 입력값입니다")
                 continue
             } else { // 잘못된 입력으로 힌트 얻기 방지
+                // 올바른 입력 시 시도 횟수 증가
+                trialCount += 1
                 // strike, ball 갱신
                 for i in answer.indices {
                     if userAnswer[i] == answer[i] {
