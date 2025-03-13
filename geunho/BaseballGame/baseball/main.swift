@@ -15,9 +15,10 @@ enum GameState: String {
 
 let game = BaseballGame()
 
-welcome()
+runMainMenu()
 
-func welcome() {
+/// 석환님: welcome -> 명확한 이름으로 변경
+func runMainMenu() {
     while true {
         var selectedState: String
         
@@ -35,7 +36,7 @@ func welcome() {
         case "1":
             game.start()
         case "2":
-            game.log()
+            game.showLog()
         case "3":
             game.quit()
         default:

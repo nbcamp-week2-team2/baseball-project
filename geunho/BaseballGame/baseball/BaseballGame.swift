@@ -71,7 +71,7 @@ class BaseballGame {
                     updateRecord()
                     recordManager.addRecord()
                     // 재시작
-                    welcome()
+                    runMainMenu()
                 } else if balls == 0 && strikes == 0 {
                     print("Nothing")
                 } else {
@@ -128,18 +128,20 @@ class BaseballGame {
         // 배열 -> 문자열 변환
         // 디버깅 시 정답 확인
         print("정답: \(answer.joined())")
-
+        
         return answer
     }
     
     // MARK: - 게임 기록 보기
-    func log() {
+    /// 승호님: 애매한 함수이름 (ex: showLog()등으로 변경)
+    /// 석환님: 명사만 이름 오면(메소드) -> get이 생략된 것: 명사만 쓰지 말 것
+    func showLog() {
         if !recordManager.records.isEmpty {
             recordManager.showRecords()
         } else {
             print("\n기록이 없습니다")
         }
-        welcome()
+        runMainMenu()
     }
     
     // MARK: - 종료하기
