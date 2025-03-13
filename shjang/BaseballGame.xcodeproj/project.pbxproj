@@ -23,9 +23,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		58CA1BDF2D7F3B450079487C /* shjang */ = {
+		58CA1BDF2D7F3B450079487C /* BaseballGame */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = shjang;
+			path = BaseballGame;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -44,7 +44,7 @@
 		58CA1BD42D7F3B450079487C = {
 			isa = PBXGroup;
 			children = (
-				58CA1BDF2D7F3B450079487C /* shjang */,
+				58CA1BDF2D7F3B450079487C /* BaseballGame */,
 				58CA1BDE2D7F3B450079487C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +73,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				58CA1BDF2D7F3B450079487C /* shjang */,
+				58CA1BDF2D7F3B450079487C /* BaseballGame */,
 			);
 			name = shjang;
 			packageProductDependencies = (
@@ -97,7 +97,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58CA1BD82D7F3B450079487C /* Build configuration list for PBXProject "shjang" */;
+			buildConfigurationList = 58CA1BD82D7F3B450079487C /* Build configuration list for PBXProject "BaseballGame" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -270,7 +270,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58CA1BD82D7F3B450079487C /* Build configuration list for PBXProject "shjang" */ = {
+		58CA1BD82D7F3B450079487C /* Build configuration list for PBXProject "BaseballGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58CA1BE22D7F3B450079487C /* Debug */,
