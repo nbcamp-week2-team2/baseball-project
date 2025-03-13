@@ -14,8 +14,8 @@ struct BaseballGame {
             print("환영합니다! 원하시는 번호를 입력해주세요\n1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기\n>> ", terminator: "")
 
             guard let selectedNumber = readLine() else {
-                print("\n< 숫자 야구 게임을 종료합니다 >")
-                exit(0)
+                exitApp()
+                return
             }
 
             switch selectedNumber {
@@ -24,8 +24,7 @@ struct BaseballGame {
             case "2":
                 printGameRecords()
             case "3":
-                print("\n< 숫자 야구 게임을 종료합니다 >\n")
-                exit(0)
+                exitApp()
             default:
                 print("올바른 숫자를 입력해주세요!\n")
             }
@@ -42,8 +41,8 @@ struct BaseballGame {
             print("숫자를 입력하세요\n>> ", terminator: "")
 
             guard let input = readLine() else {
-                print("\n< 숫자 야구 게임을 종료합니다 >")
-                exit(0)
+                exitApp()
+                return
             }
             guard let answer = validatedAnswer(from: input) else {
                 print("올바르지 않은 입력값입니다\n")
@@ -105,5 +104,10 @@ struct BaseballGame {
             output += "\n저장된 기록이 없습니다!"
         }
         print("\(output)\n")
+    }
+
+    func exitApp() {
+        print("\n< 숫자 야구 게임을 종료합니다 >")
+        exit(0)
     }
 }
