@@ -3,7 +3,7 @@ import Foundation
 /**
  BaseballGame에서 입력된 숫자와 정답을 비교하여 결과를 판정하는 유틸리티
  */
-enum StrikeBallEvaluator {
+enum BaseballGameStrikeBallEvaluator {
     /**
      판정 결과를 나타내는 열거형
      */

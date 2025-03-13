@@ -57,7 +57,7 @@ struct BaseballGame {
                 continue
             }
 
-            switch StrikeBallEvaluator.evaluate(answer: answer, from: correctAnswer) {
+            switch BaseballGameStrikeBallEvaluator.evaluate(answer: answer, from: correctAnswer) {
             case .correct:
                 print(BaseballGameText.correct)
                 attempts.append(attempt)
