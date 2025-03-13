@@ -8,7 +8,7 @@ final class BaseballGameTests: XCTestCase {
     }
 
     /*
-     validatedAnswer(from:)에 대한 TC
+     BaseballGame.validatedAnswer(from:)에 대한 TC
      */
     func test_정상입력() throws {
         let input = 123
@@ -60,5 +60,89 @@ final class BaseballGameTests: XCTestCase {
 
     func test_자릿수분리체크() throws {
         XCTAssertEqual(123.digits, [1, 2, 3])
+    }
+
+    /*
+     StrikeBallEvalutor.evaluate(answer:from:)에 대한 TC
+     */
+    func test_3스트라이크0볼() throws {
+        switch StrikeBallEvaluator.evaluate(answer: 345, from: 345) {
+        case .correct:
+            break
+        default:
+            XCTFail()
+        }
+    }
+
+    func test_2스트라이크0볼() throws {
+        switch StrikeBallEvaluator.evaluate(answer: 245, from: 345) {
+        case .partialCorrect(strikes: 2, balls: 0):
+            break
+        default:
+            XCTFail()
+        }
+    }
+
+    func test_1스트라이크2볼() throws {
+        switch StrikeBallEvaluator.evaluate(answer: 435, from: 345) {
+        case .partialCorrect(strikes: 1, balls: 2):
+            break
+        default:
+            XCTFail()
+        }
+    }
+
+    func test_1스트라이크1볼() throws {
+        switch StrikeBallEvaluator.evaluate(answer: 485, from: 345) {
+        case .partialCorrect(strikes: 1, balls: 1):
+            break
+        default:
+            XCTFail()
+        }
+    }
+
+    func test_1스트라이크0볼() throws {
+        switch StrikeBallEvaluator.evaluate(answer: 942, from: 345) {
+        case .partialCorrect(strikes: 1, balls: 0):
+            break
+        default:
+            XCTFail()
+        }
+    }
+
+    func test_0스트라이크3볼() throws {
+        switch StrikeBallEvaluator.evaluate(answer: 534, from: 345) {
+        case .partialCorrect(strikes: 0, balls: 3):
+            break
+        default:
+            XCTFail()
+        }
+    }
+
+    func test_0스트라이크2볼() throws {
+        switch StrikeBallEvaluator.evaluate(answer: 753, from: 345) {
+        case .partialCorrect(strikes: 0, balls: 2):
+            break
+        default:
+            XCTFail()
+        }
+    }
+
+    func test_0스트라이크1볼() throws {
+        switch StrikeBallEvaluator.evaluate(answer: 783, from: 345) {
+        case .partialCorrect(strikes: 0, balls: 1):
+            break
+        default:
+            XCTFail()
+        }
+    }
+
+    func test_0스트라이크0볼() throws {
+        switch StrikeBallEvaluator.evaluate(answer: 789, from: 345) {
+        case .incorrect:
+            break
+        default:
+            XCTFail()
+        }
     }
 }
