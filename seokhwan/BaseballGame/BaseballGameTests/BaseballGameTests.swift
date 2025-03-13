@@ -7,9 +7,7 @@ final class BaseballGameTests: XCTestCase {
         baseballGame = BaseballGame()
     }
 
-    /*
-     BaseballGame.validatedAnswer(from:)에 대한 TC
-     */
+    // MARK: - BaseballGame.validatedAnswer(from:)에 대한 TC
     func test_정상입력() throws {
         let input = 123
         XCTAssertEqual(input, baseballGame.validatedAnswer(from: "\(input)"))
@@ -38,9 +36,7 @@ final class BaseballGameTests: XCTestCase {
         XCTAssertNil(baseballGame.validatedAnswer(from: "111"))
     }
 
-    /*
-     Int+Extensions에 대한 TC
-     */
+    // MARK: - Int+Extensions에 대한 TC
     func test_3자리숫자인지체크() throws {
         XCTAssertFalse(3.isThreeDigit)
         XCTAssertFalse(99.isThreeDigit)
@@ -62,9 +58,7 @@ final class BaseballGameTests: XCTestCase {
         XCTAssertEqual(123.digits, [1, 2, 3])
     }
 
-    /*
-     StrikeBallEvalutor.evaluate(answer:from:)에 대한 TC
-     */
+    // MARK: - StrikeBallEvalutor.evaluate(answer:from:)에 대한 TC
     func test_3스트라이크0볼() throws {
         switch StrikeBallEvaluator.evaluate(answer: 345, from: 345) {
         case .correct:
