@@ -17,6 +17,7 @@ seokhwan
 │   ├── Sources
 │   │   ├── BaseballGame
 │   │   │   ├── BaseballGame.swift
+│   │   │   ├── BaseballGameInputReader.swift
 │   │   │   ├── BaseballGameMenuOption.swift
 │   │   │   ├── BaseballGameStrikeBallEvaluator.swift
 │   │   │   ├── BaseballGameText.swift
@@ -76,3 +77,4 @@ open Package.swift # 프로젝트 열기
 ## 💡 Trouble Shooting
 
 - [SPM은 왜 xcodeproj 파일을 ignore할까?](https://youseokhwan.me/blog/spm-ignore-xcodeproj/)
+- [CLI에서 EOF 이후에도 표준 입력 받기](https://youseokhwan.me/blog/handling-eof-in-swift-cli/)

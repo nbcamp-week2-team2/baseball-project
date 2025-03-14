@@ -21,11 +21,8 @@ public struct BaseballGame {
         while true {
             print(BaseballGameText.appPrompt, terminator: "")
 
-            guard let input = readLine() else {
-                exitApp()
-                return
-            }
-            guard let selectedOption = BaseballGameMenuOption(from: input) else {
+            guard let input = BaseballGameInputReader.readLine(),
+                  let selectedOption = BaseballGameMenuOption(from: input) else {
                 print(BaseballGameText.invalidNumber)
                 continue
             }
@@ -53,11 +50,8 @@ public struct BaseballGame {
             attempt += 1
             print(BaseballGameText.gamePrompt, terminator: "")
 
-            guard let input = readLine() else {
-                exitApp()
-                return
-            }
-            guard let answer = validatedAnswer(from: input) else {
+            guard let input = BaseballGameInputReader.readLine(),
+                  let answer = validatedAnswer(from: input) else {
                 print(BaseballGameText.invalidNumber)
                 continue
             }
