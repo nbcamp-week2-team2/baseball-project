@@ -41,8 +41,8 @@ swift test # 테스트 실행
 open Package.swift # 프로젝트 열기
 ```
 
-* Run on Xcode -> BaseballGameCLI로 타겟 설정 후 `⌘ + R`
-* Test on Xcode -> BaseballGame-Package로 타겟 설정 후 `⌘ + U` 
+* Xcode에서 실행 -> Scheme을 BaseballGameCLI로 설정 후 `⌘ + R`
+* Xcode에서 Test -> Scheme을 BaseballGame-Package로 설정 후 `⌘ + U` 
 
 ## 🚀 Features
 
@@ -78,3 +78,4 @@ open Package.swift # 프로젝트 열기
 
 - [SPM은 왜 xcodeproj 파일을 ignore할까?](https://youseokhwan.me/blog/spm-ignore-xcodeproj/)
 - [CLI에서 EOF 이후에도 표준 입력 받기](https://youseokhwan.me/blog/handling-eof-in-swift-cli/)
+- [no such module 'XCTest' 오류 해결 과정 정리](https://youseokhwan.me/blog/active-developer-directory-to-xcode/)
