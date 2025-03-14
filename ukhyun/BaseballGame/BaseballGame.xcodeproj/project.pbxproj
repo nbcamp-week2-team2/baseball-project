@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXCopyFilesBuildPhase section */
-		44AFD5812D7ED46500CD3FFE /* CopyFiles */ = {
+		A50146142D7EB4CD00311A86 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -19,46 +19,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		44AFD5832D7ED46500CD3FFE /* BaseballGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BaseballGame; sourceTree = BUILT_PRODUCTS_DIR; };
-		44E3D6302D7FD56300B16B60 /* BaseballGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseballGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A50146162D7EB4CD00311A86 /* BaseballGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BaseballGame; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		44E3D6382D7FD56D00B16B60 /* Exceptions for "BaseballGame" folder in "BaseballGameTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				BaseballGame.swift,
-				"Int+Extensions.swift",
-			);
-			target = 44E3D62F2D7FD56300B16B60 /* BaseballGameTests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		44AFD5852D7ED46500CD3FFE /* BaseballGame */ = {
+		A50146182D7EB4CD00311A86 /* BaseballGame */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				44E3D6382D7FD56D00B16B60 /* Exceptions for "BaseballGame" folder in "BaseballGameTests" target */,
-			);
 			path = BaseballGame;
-			sourceTree = "<group>";
-		};
-		44E3D6312D7FD56300B16B60 /* BaseballGameTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BaseballGameTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		44AFD5802D7ED46500CD3FFE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44E3D62D2D7FD56300B16B60 /* Frameworks */ = {
+		A50146132D7EB4CD00311A86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -68,20 +41,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		44AFD57A2D7ED46500CD3FFE = {
+		A501460D2D7EB4CD00311A86 = {
 			isa = PBXGroup;
 			children = (
-				44AFD5852D7ED46500CD3FFE /* BaseballGame */,
-				44E3D6312D7FD56300B16B60 /* BaseballGameTests */,
-				44AFD5842D7ED46500CD3FFE /* Products */,
+				A50146182D7EB4CD00311A86 /* BaseballGame */,
+				A50146172D7EB4CD00311A86 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		44AFD5842D7ED46500CD3FFE /* Products */ = {
+		A50146172D7EB4CD00311A86 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				44AFD5832D7ED46500CD3FFE /* BaseballGame */,
-				44E3D6302D7FD56300B16B60 /* BaseballGameTests.xctest */,
+				A50146162D7EB4CD00311A86 /* BaseballGame */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,107 +60,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		44AFD5822D7ED46500CD3FFE /* BaseballGame */ = {
+		A50146152D7EB4CD00311A86 /* BaseballGame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44AFD58A2D7ED46500CD3FFE /* Build configuration list for PBXNativeTarget "BaseballGame" */;
+			buildConfigurationList = A501461D2D7EB4CD00311A86 /* Build configuration list for PBXNativeTarget "BaseballGame" */;
 			buildPhases = (
-				44AFD57F2D7ED46500CD3FFE /* Sources */,
-				44AFD5802D7ED46500CD3FFE /* Frameworks */,
-				44AFD5812D7ED46500CD3FFE /* CopyFiles */,
+				A50146122D7EB4CD00311A86 /* Sources */,
+				A50146132D7EB4CD00311A86 /* Frameworks */,
+				A50146142D7EB4CD00311A86 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				44AFD5852D7ED46500CD3FFE /* BaseballGame */,
+				A50146182D7EB4CD00311A86 /* BaseballGame */,
 			);
 			name = BaseballGame;
 			packageProductDependencies = (
 			);
 			productName = BaseballGame;
-			productReference = 44AFD5832D7ED46500CD3FFE /* BaseballGame */;
+			productReference = A50146162D7EB4CD00311A86 /* BaseballGame */;
 			productType = "com.apple.product-type.tool";
-		};
-		44E3D62F2D7FD56300B16B60 /* BaseballGameTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 44E3D6362D7FD56300B16B60 /* Build configuration list for PBXNativeTarget "BaseballGameTests" */;
-			buildPhases = (
-				44E3D62C2D7FD56300B16B60 /* Sources */,
-				44E3D62D2D7FD56300B16B60 /* Frameworks */,
-				44E3D62E2D7FD56300B16B60 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				44E3D6312D7FD56300B16B60 /* BaseballGameTests */,
-			);
-			name = BaseballGameTests;
-			packageProductDependencies = (
-			);
-			productName = BaseballGameTests;
-			productReference = 44E3D6302D7FD56300B16B60 /* BaseballGameTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		44AFD57B2D7ED46500CD3FFE /* Project object */ = {
+		A501460E2D7EB4CD00311A86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					44AFD5822D7ED46500CD3FFE = {
-						CreatedOnToolsVersion = 16.2;
-					};
-					44E3D62F2D7FD56300B16B60 = {
-						CreatedOnToolsVersion = 16.2;
+					A50146152D7EB4CD00311A86 = {
+						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = 44AFD57E2D7ED46500CD3FFE /* Build configuration list for PBXProject "BaseballGame" */;
+			buildConfigurationList = A50146112D7EB4CD00311A86 /* Build configuration list for PBXProject "BaseballGame" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 44AFD57A2D7ED46500CD3FFE;
+			mainGroup = A501460D2D7EB4CD00311A86;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 44AFD5842D7ED46500CD3FFE /* Products */;
+			productRefGroup = A50146172D7EB4CD00311A86 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				44AFD5822D7ED46500CD3FFE /* BaseballGame */,
-				44E3D62F2D7FD56300B16B60 /* BaseballGameTests */,
+				A50146152D7EB4CD00311A86 /* BaseballGame */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		44E3D62E2D7FD56300B16B60 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		44AFD57F2D7ED46500CD3FFE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44E3D62C2D7FD56300B16B60 /* Sources */ = {
+		A50146122D7EB4CD00311A86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -199,7 +127,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		44AFD5882D7ED46500CD3FFE /* Debug */ = {
+		A501461B2D7EB4CD00311A86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -252,18 +180,17 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		44AFD5892D7ED46500CD3FFE /* Release */ = {
+		A501461C2D7EB4CD00311A86 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -310,110 +237,58 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
-		44AFD58B2D7ED46500CD3FFE /* Debug */ = {
+		A501461E2D7EB4CD00311A86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37CRZBHS68;
+				DEVELOPMENT_TEAM = C8K7T5GB89;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		44AFD58C2D7ED46500CD3FFE /* Release */ = {
+		A501461F2D7EB4CD00311A86 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37CRZBHS68;
+				DEVELOPMENT_TEAM = C8K7T5GB89;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		44E3D6342D7FD56300B16B60 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 37CRZBHS68;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = youseokhwan.BaseballGameTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 2.2;
-			};
-			name = Debug;
-		};
-		44E3D6352D7FD56300B16B60 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 37CRZBHS68;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = youseokhwan.BaseballGameTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		44AFD57E2D7ED46500CD3FFE /* Build configuration list for PBXProject "BaseballGame" */ = {
+		A50146112D7EB4CD00311A86 /* Build configuration list for PBXProject "BaseballGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				44AFD5882D7ED46500CD3FFE /* Debug */,
-				44AFD5892D7ED46500CD3FFE /* Release */,
+				A501461B2D7EB4CD00311A86 /* Debug */,
+				A501461C2D7EB4CD00311A86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44AFD58A2D7ED46500CD3FFE /* Build configuration list for PBXNativeTarget "BaseballGame" */ = {
+		A501461D2D7EB4CD00311A86 /* Build configuration list for PBXNativeTarget "BaseballGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				44AFD58B2D7ED46500CD3FFE /* Debug */,
-				44AFD58C2D7ED46500CD3FFE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		44E3D6362D7FD56300B16B60 /* Build configuration list for PBXNativeTarget "BaseballGameTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				44E3D6342D7FD56300B16B60 /* Debug */,
-				44E3D6352D7FD56300B16B60 /* Release */,
+				A501461E2D7EB4CD00311A86 /* Debug */,
+				A501461F2D7EB4CD00311A86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 44AFD57B2D7ED46500CD3FFE /* Project object */;
+	rootObject = A501460E2D7EB4CD00311A86 /* Project object */;
 }
